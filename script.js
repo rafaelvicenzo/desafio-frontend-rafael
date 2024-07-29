@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
             filteredData = data;
 
             if (!data || data.length === 0) {
-                throw new Error('Nenhum dado encontrado na API');
+                throw new Error('No data found in API');
             }
 
             totalPages = Math.ceil(filteredData.length / itemsPerPage);
             displayPage(currentPage);
             createPagination();
         } catch (error) {
-            console.error('Erro ao buscar dados da API:', error);
-            alert("A API está fora do ar. Tente novamente mais tarde.");
+            console.error('Error fetching data from API:', error);
+            alert("The API is down. Try again later.");
         }
     }
 
