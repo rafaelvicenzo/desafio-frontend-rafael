@@ -55,64 +55,68 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
-            // Adiciona um evento de clique no card
-            card.addEventListener('click', () => selectHero(metahuman.name, metahuman.powerstats));
+            card.addEventListener('click', () => selectHero(metahuman.name, metahuman.powerstats, metahuman.images.sm));
 
             main.appendChild(card);
         });
     }
 
-    function selectHero(heroName, heroStats) {
+    function selectHero(heroName, heroStats, heroImage) {
         const hero1 = document.querySelector('.hero1');
         const hero2 = document.querySelector('.hero2');
 
-        // Adiciona o herói selecionado à lista
-        selectedHeroes.push({ name: heroName, stats: heroStats });
+        selectedHeroes.push({ name: heroName, stats: heroStats, image: heroImage });
 
-        // Se hero1 estiver como 'Select One Hero', altera para o nome do herói
         if (hero1.textContent === 'Select One Hero') {
             hero1.textContent = heroName;
         } 
-        // Se hero2 estiver como 'Select One Hero', altera para o nome do herói
         else if (hero2.textContent === 'Select One Hero') {
             hero2.textContent = heroName;
         }
 
-        // Se ambos os heróis foram selecionados, calcula o vencedor
         if (selectedHeroes.length === 2) {
             displayWinner();
         }
     }
 
     function displayWinner() {
-        const hero1Stats = selectedHeroes[0].stats;
-        const hero2Stats = selectedHeroes[1].stats;
-
+        const hero1 = selectedHeroes[0];
+        const hero2 = selectedHeroes[1];
+    
+        const hero1Stats = hero1.stats;
+        const hero2Stats = hero2.stats;
+    
         const hero1Total = hero1Stats.intelligence + hero1Stats.strength + hero1Stats.speed +
                            hero1Stats.durability + hero1Stats.power + hero1Stats.combat;
         const hero2Total = hero2Stats.intelligence + hero2Stats.strength + hero2Stats.speed +
                            hero2Stats.durability + hero2Stats.power + hero2Stats.combat;
-
+    
         let winnerMessage = '';
         
         if (hero1Total > hero2Total) {
-            winnerMessage = `${selectedHeroes[0].name} 🏆 Is the winner! 🏆`;
+            winnerMessage = `${hero1.name} 🏆 WINNER! 🏆`;
         } else if (hero2Total > hero1Total) {
-            winnerMessage = `${selectedHeroes[1].name} 🏆 Is the winner! 🏆`;
+            winnerMessage = `${hero2.name} 🏆 WINNER! 🏆`;
         } else {
             winnerMessage = `It's a draw!`;
         }
-
-        // Exibe o modal
+    
         document.getElementById('winner').textContent = winnerMessage;
-        document.getElementById('result').textContent = `${selectedHeroes[0].name}: ${hero1Total} vs ${selectedHeroes[1].name}: ${hero2Total}`;
+        document.getElementById('result').textContent = `${hero1.name}: ${hero1Total} vs ${hero2.name}: ${hero2Total}`;
+    
+        document.getElementById('hero1Image').src = hero1.image; // Corrigido aqui
+        document.getElementById('hero1Name').textContent = hero1.name;
+        document.getElementById('hero1Stats').textContent = `Int: ${hero1Stats.intelligence}, Str: ${hero1Stats.strength}, Spd: ${hero1Stats.speed}, Dur: ${hero1Stats.durability}, Pow: ${hero1Stats.power}, Comb: ${hero1Stats.combat}`;
+    
+        document.getElementById('hero2Image').src = hero2.image; // Corrigido aqui
+        document.getElementById('hero2Name').textContent = hero2.name;
+        document.getElementById('hero2Stats').textContent = `Int: ${hero2Stats.intelligence}, Str: ${hero2Stats.strength}, Spd: ${hero2Stats.speed}, Dur: ${hero2Stats.durability}, Pow: ${hero2Stats.power}, Comb: ${hero2Stats.combat}`;
+    
         document.getElementById('winnerModal').style.display = 'block';
         
-        // Reseta a seleção de heróis
         selectedHeroes = [];
     }
 
-    // Fecha o modal quando clicar no botão de fechar
     document.querySelector('.close-button').addEventListener('click', function() {
         document.getElementById('winnerModal').style.display = 'none';
     });
