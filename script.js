@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+
     function displayWinner() {
         const hero1 = selectedHeroes[0];
         const hero2 = selectedHeroes[1];
@@ -104,13 +106,35 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('winner').textContent = winnerMessage;
         document.getElementById('result').textContent = `${hero1.name}: ${hero1Total} vs ${hero2.name}: ${hero2Total}`;
     
-        document.getElementById('hero1Image').src = hero1.image; // Corrigido aqui
+        document.getElementById('hero1Image').src = hero1.image;
         document.getElementById('hero1Name').textContent = hero1.name;
-        document.getElementById('hero1Stats').textContent = `Int: ${hero1Stats.intelligence}, Str: ${hero1Stats.strength}, Spd: ${hero1Stats.speed}, Dur: ${hero1Stats.durability}, Pow: ${hero1Stats.power}, Comb: ${hero1Stats.combat}`;
     
-        document.getElementById('hero2Image').src = hero2.image; // Corrigido aqui
+        document.getElementById('hero2Image').src = hero2.image;
         document.getElementById('hero2Name').textContent = hero2.name;
-        document.getElementById('hero2Stats').textContent = `Int: ${hero2Stats.intelligence}, Str: ${hero2Stats.strength}, Spd: ${hero2Stats.speed}, Dur: ${hero2Stats.durability}, Pow: ${hero2Stats.power}, Comb: ${hero2Stats.combat}`;
+    
+        const hero1StatsContainer = document.getElementById('hero1Stats');
+        hero1StatsContainer.innerHTML = '';
+        const hero2StatsContainer = document.getElementById('hero2Stats');
+        hero2StatsContainer.innerHTML = '';
+    
+        const stats = [
+            { name: 'Intelligence', value1: hero1Stats.intelligence, value2: hero2Stats.intelligence },
+            { name: 'Strength', value1: hero1Stats.strength, value2: hero2Stats.strength },
+            { name: 'Speed', value1: hero1Stats.speed, value2: hero2Stats.speed },
+            { name: 'Durability', value1: hero1Stats.durability, value2: hero2Stats.durability },
+            { name: 'Power', value1: hero1Stats.power, value2: hero2Stats.power },
+            { name: 'Combat', value1: hero1Stats.combat, value2: hero2Stats.combat }
+        ];
+    
+        stats.forEach(stat => {
+            const statElement1 = document.createElement('p');
+            statElement1.textContent = `${stat.value1}`;
+            hero1StatsContainer.appendChild(statElement1);
+    
+            const statElement2 = document.createElement('p');
+            statElement2.textContent = `${stat.value2}`;
+            hero2StatsContainer.appendChild(statElement2);
+        });
     
         document.getElementById('winnerModal').style.display = 'block';
         
@@ -120,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.close-button').addEventListener('click', function() {
         document.getElementById('winnerModal').style.display = 'none';
     });
+
+    
 
     function createPagination() {
         const pagination = document.querySelector('.pagination');

@@ -122,6 +122,10 @@ main {
     align-items: center;
 }
 
+#result {
+    margin-top: 10px;
+}
+
 .modal-content {
     background-color: white;
     padding: 20px;
@@ -147,7 +151,17 @@ main {
     font-size: 24px;
 }
 
+.atributes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-transform: uppercase;
+ 
+}
 
+#hero1Stats p, #hero2Stats p {
+    margin-bottom: 20px;
+}
 
 
 
