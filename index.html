@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Supers</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Supers</title>
+    </head>
+    
 <body>
     <nav>
         <input type="search" class="search" placeholder="Search a hero">
@@ -13,6 +14,18 @@
     </nav>
     <div id="stars"></div>
     <h1>Choose Your Hero</h1>
+    <div class="chooseHero">
+    <p class="hero1">Select One Hero</p>
+    <p>⚔️</p>
+    <p class="hero2">Select One Hero</p>
+    </div>
+    <div id="winnerModal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="winner"></h2>
+            <p id="result"></p>
+        </div>
+    </div>
     <main>
         <div class="card">
             <img src="assets/img/15-alex-mercer.jpg" class="image">
