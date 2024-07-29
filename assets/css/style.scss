@@ -1,4 +1,5 @@
 @import url(/assets/css/fonts.css);
+@import url(/assets/css/stars.css);
 
 * {
     margin: 0;
@@ -12,18 +13,54 @@ nav {
     margin-top: 15px;
 }
 
+body {
+    background: linear-gradient(to bottom right, #1D2948, #141D33, #0F1628, #050A16);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    color: #fff;
+}
+
 .search {
     width: 600px;
     padding: 10px;
     border-radius: 20px;
+    border: none;
 }
 
-.search button {
+.searchImg {
     position: relative;
     right: 38px;
     background: transparent;
     border: none;
+    cursor: pointer;
 }
+
+.card {
+    background-color: rgba(223, 223, 223, 0.3);
+    width: 250px;
+    border-radius: 30px;
+    margin: 100px 0 10px 60px;
+}
+
+.middle {
+    display: flex;
+    gap: 100px;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+
+.colLeft, .colRight {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 
 
 
