@@ -67,12 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const hero1 = document.querySelector('.hero1');
         const hero2 = document.querySelector('.hero2');
 
-        // Remove 'selected' class from previously selected cards
         document.querySelectorAll('.card').forEach(card => {
             card.classList.remove('selected');
         });
 
-        // Add 'selected' class to the clicked card
         card.classList.add('selected');
 
         selectedHeroes.push({ name: heroName, stats: heroStats, image: heroImage });
@@ -125,12 +123,12 @@ document.addEventListener('DOMContentLoaded', function () {
         hero2StatsContainer.innerHTML = '';
 
         const stats = [
-            { name: 'Intelligence', value1: hero1Stats.intelligence, value2: hero2Stats.intelligence },
-            { name: 'Strength', value1: hero1Stats.strength, value2: hero2Stats.strength },
-            { name: 'Speed', value1: hero1Stats.speed, value2: hero2Stats.speed },
-            { name: 'Durability', value1: hero1Stats.durability, value2: hero2Stats.durability },
-            { name: 'Power', value1: hero1Stats.power, value2: hero2Stats.power },
-            { name: 'Combat', value1: hero1Stats.combat, value2: hero2Stats.combat }
+            { name: '', value1: hero1Stats.intelligence, value2: hero2Stats.intelligence },
+            { name: '', value1: hero1Stats.strength, value2: hero2Stats.strength },
+            { name: '', value1: hero1Stats.speed, value2: hero2Stats.speed },
+            { name: '', value1: hero1Stats.durability, value2: hero2Stats.durability },
+            { name: '', value1: hero1Stats.power, value2: hero2Stats.power },
+            { name: '', value1: hero1Stats.combat, value2: hero2Stats.combat }
         ];
 
         stats.forEach(stat => {
@@ -186,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.querySelector('.search').value.toLowerCase();
         filteredData = data.filter(metahuman => metahuman.name.toLowerCase().includes(searchInput));
         totalPages = Math.ceil(filteredData.length / itemsPerPage);
-        currentPage = 1; // Reset to the first page
+        currentPage = 1; 
         displayPage(currentPage);
         createPagination();
     }
